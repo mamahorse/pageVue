@@ -1,14 +1,12 @@
 import { createStore } from 'vuex'
-
+import { getModules } from './modules'
+// 使用状态管理组件
 export default createStore({
-  state: {
+  state: {                    //  全局调用
   },
-  getters: {
+  mutations: {                //  全局使用
   },
-  mutations: {
+  actions: {                  //  全局使用
   },
-  actions: {
-  },
-  modules: {
-  }
+  modules: getModules(),
 })
