@@ -1,4 +1,5 @@
 /*eslint-disable */
+// @ts-nocheck
 import { message } from 'ant-design-vue';
 import Axios, { AxiosRequestConfig, AxiosInstance } from 'axios';
 import { gateWayUrl } from './sysUtils';
@@ -8,9 +9,9 @@ import { getToken } from './utils';
 export default class RequestBase {
     static init(): AxiosInstance {
         const instance = Axios.create({
-            baseURL: gateWayUrl(),    
+            baseURL: gateWayUrl(),
             timeout: 5000,                           // 设置超时时间
-            headers: { 'Authorization': getToken()+'' }
+            headers: { 'Authorization': getToken() + '' }
         });
         instance.interceptors.response.use(
             response => {
@@ -32,9 +33,7 @@ export default class RequestBase {
         await this.init().get(url, config).then((result) => {
             if (result) {
                 if (result.data.code !== 2000) {
-                    message.warn({
-                        content: result.data.message
-                    })
+                    message.warn({ content: result.data.message})
                 } else {
                     res = result.data.content;
                 }
